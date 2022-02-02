@@ -18,6 +18,18 @@ app.use(morgan('tiny'));
 app.use(cors())
 app.options('*', cors())
 
+app.get('/', (req, res, next) => {
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            name: 'mediKare app',
+            version: '0.1.0'
+        }
+    });
+
+});
+
 app.use(`${api}/users`, userRouter)
 
 mongoose.connect(
